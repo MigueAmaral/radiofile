@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
-import { cn } from "../../lib/utils";
-import { Button } from "@/Components/ui/button";
+import { cn } from "@/lib/utils";
+import { Button } from "@/Components/ui/Button";
 import {
   Command,
   CommandEmpty,
