@@ -9,12 +9,12 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/Components/ui/command";
+} from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/Components/ui/popover";
+} from "@/components/ui/popover";
 
 export function Combobox({ list, item, setItem, ticket, setCountryName }) {
   const [open, setOpen] = React.useState(false);
