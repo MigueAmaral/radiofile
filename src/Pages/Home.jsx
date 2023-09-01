@@ -32,7 +32,7 @@ function Home() {
     if (country && genre) {
       axios
         .get(
-          `http://at1.api.radio-browser.info/json/stations/search?tag=${genre}&countrycode=${country}&limit=50&order=votes&reverse=true`
+          `https://at1.api.radio-browser.info/json/stations/search?tag=${genre}&countrycode=${country}&limit=50&order=votes&reverse=true`
         )
         .then((res) => setStationCollection(res.data))
         .catch((err) => console.log(err));
@@ -40,7 +40,7 @@ function Home() {
     if ((country === "any" || !country) && (genre === "any" || !genre)) {
       axios
         .get(
-          `http://at1.api.radio-browser.info/json/stations/search?&limit=50&order=votes&reverse=true`
+          `https://at1.api.radio-browser.info/json/stations/search?&limit=50&order=votes&reverse=true`
         )
         .then((res) => setStationCollection(res.data))
         .catch((err) => console.log(err));
@@ -49,7 +49,7 @@ function Home() {
       const countryCap = country.charAt(0).toUpperCase() + country.slice(1);
       axios
         .get(
-          `http://at1.api.radio-browser.info/json/stations/search?countrycode=${country}&limit=50&order=votes&reverse=true`
+          `https://at1.api.radio-browser.info/json/stations/search?countrycode=${country}&limit=50&order=votes&reverse=true`
         )
         .then((res) => setStationCollection(res.data))
         .catch((err) => console.log(err));
@@ -57,7 +57,7 @@ function Home() {
     if (genre && genre !== "any" && (!country || country === "any")) {
       axios
         .get(
-          `http://at1.api.radio-browser.info/json/stations/search?tag=${genre}&limit=50&order=votes&reverse=true`
+          `https://at1.api.radio-browser.info/json/stations/search?tag=${genre}&limit=50&order=votes&reverse=true`
         )
         .then((res) => setStationCollection(res.data))
         .catch((err) => console.log(err));
@@ -67,7 +67,7 @@ function Home() {
   function getVotes() {
     axios
       .get(
-        `http://at1.api.radio-browser.info/json/stations/lastclick?hidebroken=true&limit=3`
+        `https://at1.api.radio-browser.info/json/stations/lastclick?hidebroken=true&limit=3`
       )
       .then((res) => {
         console.log(res.data);
@@ -104,7 +104,7 @@ function Home() {
 
   function chooseStation(uuid) {
     axios
-      .get(`http://at1.api.radio-browser.info/json/stations/byuuid/${uuid}`)
+      .get(`https://at1.api.radio-browser.info/json/stations/byuuid/${uuid}`)
       .then((res) => {
         setPreviousStation(station);
         setStation(res.data[0]);
