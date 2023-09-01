@@ -13,7 +13,7 @@ export default function GenreSelector({genre, setGenre}) {
 
   useEffect(() => {
     axios
-      .get("http://89.58.16.19/json/tags/?order=stationcount&reverse=true&limit=500")
+      .get("https://89.58.16.19/json/tags/?order=stationcount&reverse=true&limit=500")
       .then((res) => setGenreList(res.data))
       .catch((err) => console.log(err));
   }, []);

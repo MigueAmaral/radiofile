@@ -120,7 +120,7 @@ export default function LocationDisplay({
     if (station.geo_lat && station.geo_long) {
       axios
         .get(
-          `http://api.weatherapi.com/v1/current.json?key=${
+          `https://api.weatherapi.com/v1/current.json?key=${
             import.meta.env.VITE_W_API_KEY
           }&q=${station.geo_lat},${station.geo_long}`
         )
@@ -132,7 +132,7 @@ export default function LocationDisplay({
     } else if (lat && long) {
       axios
         .get(
-          `http://api.weatherapi.com/v1/current.json?key=${
+          `https://api.weatherapi.com/v1/current.json?key=${
             import.meta.env.VITE_W_API_KEY
           }&q=${lat},${long}`
         )
