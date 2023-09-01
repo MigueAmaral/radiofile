@@ -78,7 +78,6 @@ export function Combobox({ list, item, setItem, ticket, setCountryName }) {
                       setCountryName(item.name);
                       setItem(item.iso_3166_1);
                     } else {
-                      console.log(item);
                       setItem(item.name);
                     }
                     setOpen(false);

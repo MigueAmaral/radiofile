@@ -3,17 +3,33 @@ import React, { useEffect, useState } from "react";
 import { BsHandThumbsUpFill } from "react-icons/bs";
 import { auth, db } from "/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  deleteDoc,
+  doc,
+  query,
+  where,
+} from "firebase/firestore";
 import { AiOutlineDelete } from "react-icons/ai";
 
-export default function SavedStations({ chooseStation, update, setUpdate, savedStations, setSavedStations }) {
-  
+export default function SavedStations({
+  chooseStation,
+  update,
+  setUpdate,
+  savedStations,
+  setSavedStations,
+}) {
   const [user, loading] = useAuthState(auth);
 
   async function getStations() {
     let stationsA = [];
     if (user) {
-      const querySnapshot = await getDocs(collection(db, "Stations"));
+      const q = query(
+        collection(db, "Stations"),
+        where("username", "==", user.displayName)
+      );
+      const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         stationsA.push({ id: doc.id, data: doc.data() });
       });
@@ -44,24 +60,35 @@ export default function SavedStations({ chooseStation, update, setUpdate, savedS
                   key={i.id}
                 >
                   <div className="flex flex-col justify-center items-center">
-                    {i.data.station.favicon && i.data.station.favicon != ""? (
+                    {i.data.station.favicon && i.data.station.favicon != "" ? (
                       <img
                         className="rounded-full"
                         src={i.data.station.favicon}
                         alt=""
                       />
-                    ): <img
-                    className="rounded-full"
-                    src="../../radio-svgrepo-com.svg"
-                    alt=""
-                  />}
+                    ) : (
+                      <img
+                        className="rounded-full"
+                        src="../../radio-svgrepo-com.svg"
+                        alt=""
+                      />
+                    )}
                   </div>
                   <li
                     onClick={() => chooseStation(uuid)}
                     className="cursor-pointer items-center font-sans whitespace-nowrap overflow-hidden text-ellipsis text-gray-600"
                   >
                     {i.data.station.name}{" "}
-                    <span className="text-xs">({i.data.station.country === "The United States Of America"? "USA" :i.data.station.country === "The United Kingdom Of Great Britain And Northern Ireland"? "UK" : i.data.station.country})</span>
+                    <span className="text-xs">
+                      (
+                      {i.data.station.country === "The United States Of America"
+                        ? "USA"
+                        : i.data.station.country ===
+                          "The United Kingdom Of Great Britain And Northern Ireland"
+                        ? "UK"
+                        : i.data.station.country}
+                      )
+                    </span>
                   </li>
                   <AiOutlineDelete
                     onClick={() => delStations(i.id)}

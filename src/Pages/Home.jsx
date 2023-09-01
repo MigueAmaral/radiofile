@@ -13,7 +13,6 @@ import SavedStations from "../../Components/SavedStations";
 import { BiSolidDownArrow } from "react-icons/bi";
 import NewLogoDisplay from "../../Components/ui/NewLogo";
 
-
 function Home() {
   const [country, setCountry] = useState();
   const [countryName, setCountryName] = useState();
@@ -26,7 +25,7 @@ function Home() {
   const [update, setUpdate] = useState(false);
   const [savedStations, setSavedStations] = useState();
   const [votedStations, setVotedStations] = useState();
-  const [newLogo, setNewLogo] = useState(false)
+  const [newLogo, setNewLogo] = useState(false);
 
   useEffect(() => {
     if (country && genre) {
@@ -70,16 +69,17 @@ function Home() {
         `https://at1.api.radio-browser.info/json/stations/lastclick?hidebroken=true&limit=3`
       )
       .then((res) => {
-        console.log(res.data);
         setVotedStations(res.data);
       })
       .catch((err) => console.log(err));
   }
 
   useEffect(() => {
-    getVotes()
-    const minutes = 1000*60*2
-    const interval = setInterval(() =>{getVotes()},minutes)
+    getVotes();
+    const minutes = 1000 * 60 * 2;
+    const interval = setInterval(() => {
+      getVotes();
+    }, minutes);
     return () => clearInterval(interval);
   }, []);
 
@@ -159,13 +159,15 @@ function Home() {
   }
 
   useEffect(() => {
-    setNewLogo(true)
-    setTimeout(() => {setNewLogo(false)}, 9500)
-  },[votedStations])
+    setNewLogo(true);
+    setTimeout(() => {
+      setNewLogo(false);
+    }, 9500);
+  }, [votedStations]);
 
   return (
     <div className="relative h-[100vh] lg:overflow-scroll lg:snap-y snap-mandatory">
-      <NewLogoDisplay newLogo={newLogo}/>
+      <NewLogoDisplay newLogo={newLogo} />
       {station && (
         <img
           className="opacity-90 shadow-2xl rounded-md fixed lg:w-4/5 w-full aspect-square lg:aspect-video object-cover left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
