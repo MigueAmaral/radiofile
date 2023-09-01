@@ -14,7 +14,7 @@ export default function GenreSelector({ genre, setGenre }) {
   useEffect(() => {
     axios
       .get(
-        "http://at1.api.radio-browser.info/json/tags/?order=stationcount&reverse=true&limit=500"
+        "https://at1.api.radio-browser.info/json/tags/?order=stationcount&reverse=true&limit=500"
       )
       .then((res) => setGenreList(res.data))
       .catch((err) => console.log(err));
