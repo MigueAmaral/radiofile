@@ -170,7 +170,7 @@ function Home() {
       <NewLogoDisplay newLogo={newLogo} />
       {station && (
         <img
-          className="opacity-90 shadow-2xl rounded-md fixed lg:w-4/5 w-full aspect-square lg:aspect-video object-cover left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
+          className="opacity-90 shadow-2xl rounded-md fixed lg:w-4/5 md:w-[90%] w-full aspect-square lg:aspect-video md:aspect-video object-cover left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
           src={countryImg}
           alt=""
         />
@@ -178,7 +178,7 @@ function Home() {
       <BiSolidDownArrow
         color="rgb(130,141,156)"
         size={30}
-        className="absolute bottom-[1.5rem] left-[4%] lg:bottom-[0.7rem] lg:left-[30%]"
+        className="absolute bottom-[1.5rem] left-[2%] lg:bottom-[0.7rem] lg:left-[30%]"
       />
       <BiSolidDownArrow
         color="rgb(130,141,156)"
@@ -189,7 +189,7 @@ function Home() {
         {user && (
           <div className="flex items-center gap-2">
             <img
-              className="rounded-full shadow-md"
+              className="rounded-full shadow-md w-10 md:w-20 lg:w-24"
               src={user.photoURL}
               alt=""
             />
@@ -206,11 +206,11 @@ function Home() {
             </div>
           </div>
         )}
-        <h1 className="text-slate-600 text-5xl italic font-semibold tracking-tight">
+        <h1 className="text-slate-600 text-4xl md:text-5xl lg:text-5xl italic font-semibold tracking-tight">
           radio file
         </h1>
       </div>
-      <div className="flex-col gap-20 justify-center w-4/5 lg:w-1/2 items-center mx-auto mt-4">
+      <div className="flex-col gap-20 justify-center w-4/5 md:w-3/4 lg:w-1/2 items-center mx-auto mt-4">
         <div className="flex gap-4 lg:flex">
           <CountriesSelector
             country={country}
@@ -219,7 +219,7 @@ function Home() {
           />
           <GenreSelector genre={genre} setGenre={setGenre} />
         </div>
-        <div className="grid grid-rows-2 min-h-[70vh] item-start lg:grid-cols-2 lg:grid-rows-1 gap-4">
+        <div className="grid grid-rows-2 min-h-[70vh] item-start md:grid-cols-2 md:grid-rows-1 lg:grid-cols-2 lg:grid-rows-1 gap-4">
           {stationCollection && (
             <StationList
               chooseStation={chooseStation}

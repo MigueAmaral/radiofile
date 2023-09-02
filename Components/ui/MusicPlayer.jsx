@@ -100,7 +100,7 @@ export default function MusicPlayerSlider({
 
   return (
     <Box className="overflow-hidden h-fit">
-      <Widget className="relative overflow-hidden border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-60 h-[30vh] w-full py-4 px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg">
+      <Widget className="relative overflow-hidden border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-60 h-full md:h-full lg:h-[30vh] w-full py-1 px-1 md:py-1 md:px-1 lg:py-4 lg:px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg">
         {station && station.favicon !== "" ? (
           <CoverImage>
             <img alt="can't win - Chilling Sunday" src={station.favicon} />
@@ -175,7 +175,7 @@ export default function MusicPlayerSlider({
               className="ml-5 cursor-pointer"
             />
           )}
-          <div>
+          <div className="flex">
             <IconButton
               onClick={() => chooseStation(previousStation.stationuuid)}
               aria-label="previous song"

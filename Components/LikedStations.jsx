@@ -18,12 +18,12 @@ export default function LikedStations({ votedStations, chooseStation }) {
         highlight ? "bg-green-700 animate-bounce" : "bg-slate-100"
       } items-center mx-auto rounded-md shadow-lg`}
     >
-      <ul className="bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 bg-slate-100 flex gap-2 w-full rounded-md">
+      <ul className="bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 bg-slate-100 md:flex lg:flex gap-2 w-full rounded-md">
         {votedStations.map((i) => {
           let uuid = i.stationuuid;
           return (
             <div
-              className="w-full grid grid-cols-[20px_1fr_20px] h-fit gap-2 items-center bg-slate-200  hover:bg-slate-300 rounded-md p-2"
+              className="w-full grid grid-cols-[20px_1fr_20px] h-fit gap-2 items-center bg-slate-200  hover:bg-slate-300 lg:rounded-md p-2"
               key={uuid}
             >
               <div className="flex flex-col justify-center items-center">

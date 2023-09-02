@@ -218,7 +218,7 @@ export default function LocationDisplay({
   }, [description]);
 
   return (
-    <motion.div className="grid grid-rows-[1fr_1f_1fr] gap-1 max-h-[90%] border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 w-full py-4 px-4 bg-slate-100 rounded-md shadow-lg">
+    <motion.div className="grid grid-rows-[1fr_1f_1fr] gap-1 max-h-fit lg:max-h-[90%] border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 w-full py-4 px-4 bg-slate-100 rounded-md shadow-lg">
       {votedStations && (
         <div className="h-full">
           <LikedStations
@@ -229,7 +229,7 @@ export default function LocationDisplay({
       )}
       {station.geo_lat && station.geo_long ? (
         <MapContainer
-          className="h-[420px] w-full border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 flex justify-center py-4 px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg"
+          className="h-[250px] md:h-[350px] lg:h-[420px] w-full border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 flex justify-center py-4 px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg"
           center={[station.geo_lat, station.geo_long]}
           key={lat + long}
           zoom={8}
@@ -255,7 +255,7 @@ export default function LocationDisplay({
         </MapContainer>
       ) : lat && long ? (
         <MapContainer
-          className="h-[420px] w-full border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 flex justify-center py-4 px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg"
+          className="h-[250px] md:h-[350px] lg:h-[420px] w-full border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 flex justify-center py-4 px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg"
           center={[lat, long]}
           key={lat + long}
           zoom={5}
@@ -284,21 +284,21 @@ export default function LocationDisplay({
       )}
       <div className="grid grid-cols-[1fr_2fr] w-full">
         {weather && (
-          <div className="flex-col max-h-[250px] w-full border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 flex justify-center py-4 px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg">
+          <div className="flex-col max-h-[200px] md:max-h[200px] lg:max-h-[250px] w-full border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 flex justify-center py-4 px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg">
             <img className="h-1/2" src={weather.condition.icon} alt="" />
-            <p className="text-lg text-center leading-5 text-slate-500 -mt-1">
+            <p className="text-md lg:text-lg text-center leading-5 text-slate-500 -mt-1">
               {weather.condition.text}
             </p>
-            <h1 className="text-4xl text-slate-600 font-bold mt-3">
+            <h1 className="text-xl lg:text-4xl text-slate-600 font-bold mt-3">
               {Math.floor(weather.temp_c)} ºC
             </h1>
           </div>
         )}
 
         {description && (
-          <div className="flex-col max-h-[250px] overflow-scroll w-full border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 flex justify-center py-4 px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg">
+          <div className="flex-col max-h-[200px] md:max-h-[200px] lg:max-h-[250px] overflow-scroll w-full border-solid border-2 border-slate-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 flex justify-center py-4 px-4 bg-slate-100 items-center mx-auto rounded-md shadow-lg">
             <div
-              className="text-md text-slate-800 -mt-2 max-h-full"
+              className="text-sm md:text-base lg:text-base text-slate-800 -mt-2 max-h-full"
               dangerouslySetInnerHTML={
                 description.extract_html
                   ? { __html: description.extract_html }
